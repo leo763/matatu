@@ -919,3 +919,4 @@ function draw_canvas(){
     for (let index = 0; index < canvasCardsArray.length; index++) {
         draw_image(canvasCardsArray[index].image, canvasCardsArray[index].x, canvasCardsArray[index].y);    
     }
+}
