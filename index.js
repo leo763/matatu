@@ -905,7 +905,7 @@ function clear_canvas(){
 function draw_image (image, x, y) {
    ctx.shadowOffsetX = 2;
    ctx.shadowOffsetY = 2;
-   ctx.shadowColor = '2e2e2e';
+   ctx.shadowColor = 'black';
    ctx.shadowBlur = 15;
    ctx.drawImage(image, x, y, 50, 85);
 }
