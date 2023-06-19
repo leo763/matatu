@@ -396,8 +396,8 @@ function check_cards(){
     }
 
     if (done) {
-        document.querySelector(".cover").style.display = "grid";
-        document.querySelector("#message").innerText = "Its a Draw"; 
+        document.querySelector("#pick").style.display = "none";
+       // document.querySelector("#message").innerText = "Its a Draw"; 
     }
 }
 
