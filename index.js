@@ -411,7 +411,7 @@ function check_cards(){
 
 
 var x = 20;
-var y = 100;
+var y = 50;
 
 
 
@@ -456,7 +456,7 @@ function player_turn(p, pCards){
             }
 
             if(x >= 240){
-                y = 100;
+                y = 50;
                 x = 20;
             }
            
@@ -509,7 +509,7 @@ function computer_turn(pT, p, pCards){
             }
 
             if(x >= 240){
-                y = 100;
+                y = 50;
                 x = 20;
             }
             
