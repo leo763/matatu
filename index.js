@@ -236,6 +236,7 @@ function side_card(className, playerSide){
             index--;
         }
         else{
+          
             let div = document.createElement('img');
             div.src = cardsImage[type1][card1];
             div.id = cards[type1][card1];
