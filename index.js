@@ -208,8 +208,8 @@ function begin() {
     side_card("playerx", document.querySelector(".cong"));
     clear_canvas();
     cardsPlayed = [];
-    x= 10;
-    y=50;
+    x= 20;
+    y=100;
     player1Turn = false;
     canvasCardsArray = [];
     play();
