@@ -410,7 +410,7 @@ function check_cards(){
 
 
 var x = 20;
-var y = 50;
+var y = 100;
 
 
 
