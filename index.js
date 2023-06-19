@@ -903,9 +903,9 @@ function clear_canvas(){
 
 // play cars to the canvas 
 function draw_image (image, x, y) {
-   ctx.shadowOffsetX = 5;
-   ctx.shadowOffsetY = 5;
-   ctx.shadowColor = 'black';
+   ctx.shadowOffsetX = 2;
+   ctx.shadowOffsetY = 2;
+   ctx.shadowColor = '2e2e2e';
    ctx.shadowBlur = 15;
    ctx.drawImage(image, x, y, 50, 85);
 }
@@ -919,15 +919,3 @@ function draw_canvas(){
     for (let index = 0; index < canvasCardsArray.length; index++) {
         draw_image(canvasCardsArray[index].image, canvasCardsArray[index].x, canvasCardsArray[index].y);    
     }
-}
-
-
-
-
-
-
-
-
-
-
-
