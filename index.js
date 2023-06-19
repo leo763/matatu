@@ -551,8 +551,9 @@ function play() {
                             canvasCardsArray[canvasCardsArray.length-1].image.id == "AH" || canvasCardsArray[canvasCardsArray.length-1].image.id == "AS" || 
                             canvasCardsArray[canvasCardsArray.length-1].image.id == "AF" || canvasCardsArray[canvasCardsArray.length-1].image.id == "AD"
                         ) {
-                        
+                             if(player2.length != 0){
                                 choice_a();
+                             }
                         }
                         else if (
                             canvasCardsArray[canvasCardsArray.length-1].image.id == "2H" || canvasCardsArray[canvasCardsArray.length-1].image.id == "2S" || 
