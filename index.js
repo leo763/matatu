@@ -216,7 +216,7 @@ function begin() {
 
 window.addEventListener("load", ()=>{
     let w =  window.prompt("Enter your name");
-    you = w == ""? "You Have" : w;
+    you = w == "" || w == "undefined" ? "You Have" : w;
     begin();
 });
 
@@ -908,7 +908,7 @@ function clear_canvas(){
 
 // play cars to the canvas 
 function draw_image (image, x, y) {
-    ctx.drawImage(image, x, y, 60, 85);
+    ctx.drawImage(image, x, y, 50, 80);
 }
 
 
