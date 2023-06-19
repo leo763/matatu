@@ -902,11 +902,11 @@ function clear_canvas(){
 
 // play cars to the canvas 
 function draw_image (image, x, y) {
-   ctx.shadowOffsetX = 10;
-   ctx.shadowOffsetY = 10;
+   ctx.shadowOffsetX = 5;
+   ctx.shadowOffsetY = 5;
    ctx.shadowColor = 'black';
-   ctx.shadowBlur = 30;
-   ctx.drawImage(image, x, y, 50, 80);
+   ctx.shadowBlur = 15;
+   ctx.drawImage(image, x, y, 50, 85);
 }
 
 
