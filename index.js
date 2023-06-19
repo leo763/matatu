@@ -562,7 +562,7 @@ function play() {
 
                             var sign = false;
                             for (let index = 0; index < player1.length; index++) {
-                                if(player1[index].style.display != "none"){
+                                if(computer[index].style.display != "none"){
                                     console.log(player1[index].id);
 
                                     if (
