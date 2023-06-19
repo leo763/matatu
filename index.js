@@ -6,7 +6,7 @@ canvas.height = window.innerHeight/(5/2);
 cardW = window.innerWidth < 700 ? 50 : 100;
 cardW = window.innerWidth < 700 ? 75 : 150;
 var x = 20;
-var y = 50;
+var y = 100;
 window.addEventListener("resize", ()=>{
      canvas.width = window.innerWidth < 700 ? window.innerWidth * (7/10): window.innerWidth/4;
      cardW = window.innerWidth < 700 ? 50 : 100;
@@ -450,7 +450,7 @@ function player_turn(p, pCards){
             }
 
             if(x >= 200){
-                y = 50;
+                y = 100;
                 x = 20;
             }
            
@@ -503,7 +503,7 @@ function computer_turn(pT, p, pCards){
             }
 
             if(x >= 200){
-                y = 50;
+                y = 100;
                 x = 20;
             }
             
