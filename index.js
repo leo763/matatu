@@ -454,12 +454,11 @@ function player_turn(p, pCards){
                 }
             }
 
-            if(x >= 300){
+            if(x >= 260){
                 y = 100;
                 x = 20;
             }
-            else{
-            }
+           
             
             
         } 
@@ -508,7 +507,7 @@ function computer_turn(pT, p, pCards){
                 }
             }
 
-            if(x >= 300){
+            if(x >= 260){
                 y = 100;
                 x = 20;
             }
