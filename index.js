@@ -5,7 +5,8 @@ canvas.width = window.innerWidth < 700 ? window.innerWidth* (7/10) : window.inne
 canvas.height = window.innerHeight/(5/2);
 cardW = window.innerWidth < 700 ? 50 : 100;
 cardW = window.innerWidth < 700 ? 75 : 150;
-
+var x = 20;
+var y = 50;
 window.addEventListener("resize", ()=>{
      canvas.width = window.innerWidth < 700 ? window.innerWidth * (7/10): window.innerWidth/4;
      cardW = window.innerWidth < 700 ? 50 : 100;
@@ -405,13 +406,6 @@ function check_cards(){
 
 
 
-
-
-
-
-
-var x = 20;
-var y = 50;
 
 
 
