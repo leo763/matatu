@@ -215,7 +215,7 @@ function begin() {
 }
 
 window.addEventListener("load", ()=>{
-    let w =  window.prompt("Enter your name");
+    let w =  "";
     you = w == "" || w == "undefined" ? "You Have" : w;
     begin();
 });
@@ -454,7 +454,7 @@ function player_turn(p, pCards){
                 }
             }
 
-            if(x >= 260){
+            if(x >= 240){
                 y = 100;
                 x = 20;
             }
@@ -507,12 +507,11 @@ function computer_turn(pT, p, pCards){
                 }
             }
 
-            if(x >= 260){
+            if(x >= 240){
                 y = 100;
                 x = 20;
             }
-            else{
-            }
+            
             
             
         } 
