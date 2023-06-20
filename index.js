@@ -120,6 +120,9 @@ var cards = [
                 ["2F", "3F", "4F", "5F", "6F", "7F", "8F", "9F", "10F", "JF", "QF", "KF", "AF"]
            ];
 
+var player1results;
+var player2results;
+
 
 function insertAfter(newNode, existingNode) {
      existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
@@ -237,19 +240,28 @@ function side_card(className, playerSide){
             index--;
         }
         else{
-          
-            let div = document.createElement('img');
-            div.src = cardsImage[type1][card1];
-            div.id = cards[type1][card1];
-            div.classList.add(className);
-            insertAfter(div,  playerSide.lastElementChild);
-            sideCard.push([type1, card1, cards[type1][card1]]);
-            cards[type1][card1] = "";
-            break;
+
+            if (cards[type1][card1] == "7S" || cards[type1][card1] == "7F" || cards[type1][card1] == "7D" || cards[type1][card1] == "7H") {
+                index--
+            }
+            else{
+                let div = document.createElement('img');
+                div.src = cardsImage[type1][card1];
+                div.id = cards[type1][card1];
+                div.classList.add(className);
+                insertAfter(div,  playerSide.lastElementChild);
+                sideCard.push([type1, card1, cards[type1][card1]]);
+                cards[type1][card1] = "";
+                break;
+            }
+             
         }
     }
 }
 
+
+
+    
 
 
 
@@ -518,6 +530,66 @@ function computer_turn(pT, p, pCards){
 
 
 
+function calculate_results(){
+    let results_temp = 0;
+    let comp_results_temp = 0;
+   for (let index = 0; index < player2.length; index++) {
+        if (player2[index].style.display != "none") {
+            for (let index1 = 0; index1 < player2Cards.length; index1++) {
+                if(player2[index].id == player2Cards[index1][2]){
+
+                    if (player2Cards[index1][1] == 0) {
+                        results_temp = results_temp + 20;
+                    }
+                    else if(player2Cards[index1][1] == 12){
+                        results_temp = results_temp + 15;
+                    }
+                    else{
+                        results_temp = results_temp + 2 + player2Cards[index1][1];
+                    }
+                    player2[index].style.display = "none";
+
+
+                }
+            }
+        }
+   }
+
+   for (let index = 0; index < computer.length; index++) {
+        if (computer[index].style.display != "none") {
+            for (let index1 = 0; index1 < player1Cards.length; index1++) {
+                if(computer[index].id == player1Cards[index1][2]){
+
+                    if (player1Cards[index1][1] == 0) {
+                        comp_results_temp = comp_results_temp + 20;
+                    }
+                    else if(player1Cards[index1][1] == 12){
+                        comp_results_temp = comp_results_temp + 15;
+                    }
+                    else{
+                        comp_results_temp = comp_results_temp + 2 + player1Cards[index1][1];
+                    }
+                    computer[index].style.display = "none";
+
+                }
+            }
+        }
+    }
+    console.log(comp_results_temp + " " + results_temp);
+
+    if (comp_results_temp > results_temp) {
+        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --   " + "You: " + results_temp;
+        leon(player2, you);
+    }
+    else if(comp_results_temp < results_temp){
+        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --    " + "You: " + results_temp;
+        leon(computer, "Computer");
+    }
+    else{
+        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --    " + "You: " + results_temp;
+        leon(computer, "No one");
+    }
+}
 
 
 
@@ -534,8 +606,12 @@ function play() {
 
                     if (player.style.display == "none") {
                         player2Count--;
-                        
-                        if (
+
+                        if (canvasCardsArray[canvasCardsArray.length - 1].number == 5 && canvasCardsArray[canvasCardsArray.length - 1].type == sideCard[0][0]) {
+                            console.log("running");
+                            calculate_results();  
+                        }
+                        else if (
                             canvasCardsArray[canvasCardsArray.length-1].image.id == "JH" || canvasCardsArray[canvasCardsArray.length-1].image.id == "JS" || 
                             canvasCardsArray[canvasCardsArray.length-1].image.id == "JF" || canvasCardsArray[canvasCardsArray.length-1].image.id == "JD"
                         ) {
@@ -720,7 +796,18 @@ function computer_move(){
                    leon(computer, "Computer");    
                 }, 1000);
 
-                if (
+                if (canvasCardsArray[canvasCardsArray.length - 1].number == 5 && canvasCardsArray[canvasCardsArray.length - 1].type == sideCard[0]) {
+                        calculate_results(computer, player1Cards, player1results);
+                        calculate_results(player2, player2Cards, player2results);
+
+                        if (player1results > player2results) {
+                            leon(player2, you);
+                        }
+                        else{
+                            leon(computer, "Computer");
+                        }
+                }
+                else if (
                     canvasCardsArray[canvasCardsArray.length-1].id == "JH" || canvasCardsArray[canvasCardsArray.length-1].id == "JS" || 
                     canvasCardsArray[canvasCardsArray.length-1].id == "JF" || canvasCardsArray[canvasCardsArray.length-1].id == "JD"
                 ) {
@@ -907,7 +994,7 @@ function draw_image (image, x, y) {
    ctx.shadowOffsetY = 2;
    ctx.shadowColor = '#aaaba9';
    ctx.shadowBlur = 15;
-   ctx.drawImage(image, x, y, 70, 100);
+   ctx.drawImage(image, x, y, 70, 90);
 }
 
 
