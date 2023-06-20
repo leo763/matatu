@@ -612,11 +612,11 @@ function calculate_results(){
 
     if (comp_results_temp > results_temp) {
         document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --            " + "You: " + results_temp;
-        leon(player2, you);
+        leon(computer, "Computer");
     }
     else if(comp_results_temp < results_temp){
         document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
-        leon(computer, "Computer");
+        leon(player2, you);
     }
     else{
         document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
