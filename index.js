@@ -449,7 +449,7 @@ function player_turn(p, pCards){
                 }
             }
 
-            if(x >= 200){
+            if(x >= 100){
                 y = 100;
                 x = 20;
             }
@@ -502,7 +502,7 @@ function computer_turn(pT, p, pCards){
                 }
             }
 
-            if(x >= 200){
+            if(x >= 100){
                 y = 100;
                 x = 20;
             }
@@ -905,9 +905,9 @@ function clear_canvas(){
 function draw_image (image, x, y) {
    ctx.shadowOffsetX = 2;
    ctx.shadowOffsetY = 2;
-   ctx.shadowColor = 'black';
+   ctx.shadowColor = '#aaaba9';
    ctx.shadowBlur = 15;
-   ctx.drawImage(image, x, y, 50, 85);
+   ctx.drawImage(image, x, y, 70, 100);
 }
 
 
