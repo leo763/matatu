@@ -797,15 +797,7 @@ function computer_move(){
                 }, 1000);
 
                 if (canvasCardsArray[canvasCardsArray.length - 1].number == 5 && canvasCardsArray[canvasCardsArray.length - 1].type == sideCard[0]) {
-                        calculate_results(computer, player1Cards, player1results);
-                        calculate_results(player2, player2Cards, player2results);
-
-                        if (player1results > player2results) {
-                            leon(player2, you);
-                        }
-                        else{
-                            leon(computer, "Computer");
-                        }
+                    calculate_results();       
                 }
                 else if (
                     canvasCardsArray[canvasCardsArray.length-1].id == "JH" || canvasCardsArray[canvasCardsArray.length-1].id == "JS" || 
