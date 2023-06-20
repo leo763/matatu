@@ -123,6 +123,10 @@ var cards = [
 var player1results;
 var player2results;
 
+var computer_pick_two = false;
+var pick_two = false;
+
+
 
 function insertAfter(newNode, existingNode) {
      existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
@@ -215,6 +219,7 @@ function begin() {
     y=10;
     player1Turn = false;
     canvasCardsArray = [];
+    // console.log(computer);
     play();
 }
 
@@ -434,37 +439,65 @@ function player_turn(p, pCards){
                  x = x + 20;  
                  p.style.display = "none";
 
+
+                 if(x >= 120){
+                    y = 10;
+                    x = 20;
+                 }
+
             }
             else{
-                if (canvasCardsArray[canvasCardsArray.length-1].type == pCards[index][0]) {  
-                    canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
-                    draw_canvas();
-                    x = x + 20;  
-                    p.style.display = "none";
+                if (pick_two) {
+                    if (pCards[index][2] == "2H" || pCards[index][2] == "2S" || pCards[index][2] == "2F" || pCards[index][2] == "2D") {  
+                        canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
+                        draw_canvas();
+                        x = x + 20;  
+                        p.style.display = "none";
 
-                }
-                else if(canvasCardsArray[canvasCardsArray.length-1].number == pCards[index][1]){
-                    canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
-                    draw_canvas();
-                    x = x + 20;  
-                    p.style.display = "none";
+                        if(x >= 120){
+                            y = 10;
+                            x = 20;
+                        }
+                        pick_two = false;
+    
+                    }
+                    else{
+                        alert("Either pick or Play a 2");
+                    }
+                }else{
+                    if (canvasCardsArray[canvasCardsArray.length-1].type == pCards[index][0]) {  
+                        canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
+                        draw_canvas();
+                        x = x + 20;  
+                        p.style.display = "none";
+    
+                    }
+                    else if(canvasCardsArray[canvasCardsArray.length-1].number == pCards[index][1]){
+                        canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
+                        draw_canvas();
+                        x = x + 20;  
+                        p.style.display = "none";
+    
+                    }
+                    else if(pCards[index][2] == "AH" || pCards[index][2] == "AS" || pCards[index][2] == "AF" || pCards[index][2] == "AD"){
+                        canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
+                        draw_canvas();
+                        x = x + 20;  
+                        p.style.display = "none";
+                    }
+                    else{
+                        
+                    }
 
+                    if(x >= 120){
+                        y = 10;
+                        x = 20;
+                    }
                 }
-                else if(pCards[index][2] == "AH" || pCards[index][2] == "AS" || pCards[index][2] == "AF" || pCards[index][2] == "AD"){
-                    canvasCardsArray.push({image: p, x:x, y:y, type: pCards[index][0], number: pCards[index][1], id: p.id});   
-                    draw_canvas();
-                    x = x + 20;  
-                    p.style.display = "none";
-                }
-                else{
-                    
-                }
+                
             }
 
-            if(x >= 100){
-                y = 10;
-                x = 20;
-            }
+            
            
             
             
@@ -514,7 +547,7 @@ function computer_turn(pT, p, pCards){
                 }
             }
 
-            if(x >= 100){
+            if(x >= 120){
                 y = 10;
                 x = 20;
             }
@@ -578,15 +611,15 @@ function calculate_results(){
     console.log(comp_results_temp + " " + results_temp);
 
     if (comp_results_temp > results_temp) {
-        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --   " + "You: " + results_temp;
+        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --            " + "You: " + results_temp;
         leon(player2, you);
     }
     else if(comp_results_temp < results_temp){
-        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --    " + "You: " + results_temp;
+        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
         leon(computer, "Computer");
     }
     else{
-        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --    " + "You: " + results_temp;
+        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
         leon(computer, "No one");
     }
 }
@@ -608,7 +641,6 @@ function play() {
                         player2Count--;
 
                         if (canvasCardsArray[canvasCardsArray.length - 1].number == 5 && canvasCardsArray[canvasCardsArray.length - 1].type == sideCard[0][0]) {
-                            console.log("running");
                             calculate_results();  
                         }
                         else if (
@@ -636,27 +668,22 @@ function play() {
                             canvasCardsArray[canvasCardsArray.length-1].image.id == "2F" || canvasCardsArray[canvasCardsArray.length-1].image.id == "2D"
                         ) {
 
-                            var sign = false;
                             for (let index = 0; index < player1.length; index++) {
                                 if(computer[index].style.display != "none"){
-                                    console.log(player1[index].id);
 
                                     if (
                                         computer[index].id == "2H" || computer[index].id == "2S" ||
-                                        computer[index].id == "2F" || computer[index].id == "2D" || computer[index].id == "AS"
+                                        computer[index].id == "2F" || computer[index].id == "2D" 
                                         ) {
-                                            sign = true;
+                                            computer_pick_two = true;
                                             break;
                                     }
                                 }    
                             }
   
-                            if(sign){
+                            if(computer_pick_two){
+                                
                                 player1Turn = true;
-                                setTimeout(()=> {
-                                    computer_move();
-                                }
-                                ,500);
 
                             }
                             else{
@@ -671,7 +698,7 @@ function play() {
                                 player1Count++;
                                 player1Count++;
                                 player1Turn = false;
-                                // play();
+                            
                             }
                             
                         }
@@ -679,7 +706,6 @@ function play() {
                             player1Turn = true;
                         }
                         
-                        // checkWin(player2Count, "Player2");
                         leon(player2, you);
                         
 
@@ -707,31 +733,30 @@ function computer_move(){
         var player;
     
         if (player1Turn) {
-            
-            for(let index = 0; index< computer.length; index++){
-                if (canvasCardsArray.length == 0) {
-                    computerCardsArray.push([computer[index], index]);
-                    break;
-                }
-                if(
-                    canvasCardsArray[canvasCardsArray.length-1].id == "2D" || canvasCardsArray[canvasCardsArray.length-1].id == "2S" || 
-                    canvasCardsArray[canvasCardsArray.length-1].id == "2F" || canvasCardsArray[canvasCardsArray.length-1].id == "2H"
-                    ){
-                        var found = false;
-                        for (let index = 0; index < computer.length; index++) {
-                            if (computer.id == "2D" || computer.id == "2S" || computer.id == "2F" || computer.id == "2H" || computer.id =="AS") {
+            if(computer_pick_two){
+                for(let index = 0; index< computer.length; index++){
+      
+                    if (computer[index].style.display != "none") {
+                        if ( computer[index].id == "2H" || computer[index].id == "2S" ||
+                             computer[index].id == "2F" || computer[index].id == "2D"
+                             ) {
                                 computerCardsArray.push([computer[index], index]);
-                                found = true;
-                                break;
-                            }    
+                                computer_pick_two = false;   
+                                break; 
                         }
-
-                        if (found) {
-                            break;
-                        }
+                       
+                     }
+                }
+            }
+            else{
+                for(let index = 0; index< computer.length; index++){
+                    if (canvasCardsArray.length == 0) {
+                        computerCardsArray.push([computer[index], index]);
+                        break;
+                    }
+    
                     
-                }else{
-                    if (computer[index].style.display != "none" ) {
+                    if (computer[index].style.display != "none" && !computer_pick_two ) {
                         for (let index1 = 0; index1 < player1Cards.length; index1++) {
                             if(computer[index].id == player1Cards[index1][2]){
                                 
@@ -752,9 +777,12 @@ function computer_move(){
                             computerCardsArray.push([computer[index], index]);
                         }
                      }
+                    
+                     
                 }
-                 
             }
+            
+            
            
             if(computerCardsArray.length == 0){
                 computer_pick_move();
@@ -796,14 +824,19 @@ function computer_move(){
                    leon(computer, "Computer");    
                 }, 1000);
 
-                if (canvasCardsArray[canvasCardsArray.length - 1].number == 5 && canvasCardsArray[canvasCardsArray.length - 1].type == sideCard[0]) {
+                if (canvasCardsArray[canvasCardsArray.length - 1].number == 5 && canvasCardsArray[canvasCardsArray.length - 1].type == sideCard[0][0]) {
                     calculate_results();       
                 }
                 else if (
                     canvasCardsArray[canvasCardsArray.length-1].id == "JH" || canvasCardsArray[canvasCardsArray.length-1].id == "JS" || 
                     canvasCardsArray[canvasCardsArray.length-1].id == "JF" || canvasCardsArray[canvasCardsArray.length-1].id == "JD"
                 ) {
-                   player1Turn = true;  
+                   player1Turn = true; 
+
+                   setTimeout(() => {
+                       leon(computer, "Computer");    
+                   }, 1000);
+
                    setTimeout(()=> {
                        computer_move();
                     }
@@ -814,6 +847,11 @@ function computer_move(){
                     canvasCardsArray[canvasCardsArray.length-1].id == "8F" || canvasCardsArray[canvasCardsArray.length-1].id == "8D"
                 ) {
                     player1Turn = true;
+
+                    setTimeout(() => {
+                        leon(computer, "Computer");    
+                     }, 1000);
+
                     setTimeout(()=> {
                        computer_move();
                     }
@@ -823,7 +861,11 @@ function computer_move(){
                     canvasCardsArray[canvasCardsArray.length-1].id == "AH" || canvasCardsArray[canvasCardsArray.length-1].id == "AS" || 
                     canvasCardsArray[canvasCardsArray.length-1].id == "AF" || canvasCardsArray[canvasCardsArray.length-1].id == "AD"
                 ) {
-                
+                         
+                        setTimeout(() => {
+                            leon(computer, "Computer");    
+                        }, 1000);
+                     
                         computer_choice_a();
                         player1Turn = false;
                 }
@@ -832,20 +874,19 @@ function computer_move(){
                     canvasCardsArray[canvasCardsArray.length-1].id == "2F" || canvasCardsArray[canvasCardsArray.length-1].id == "2D"
                 ) {
 
-                    var sign1 = false;
+                   
                     for (let index = 0; index < player2.length; index++) {
                         if(player2[index].style.display != "none"){
-                            console.log(player2[index].id);
                             if (
                                 player2[index].id == "2H" || player2[index].id == "2S" ||
-                                player2[index].id == "2F" || player2[index].id == "2D" || player2[index].id == "AS"
+                                player2[index].id == "2F" || player2[index].id == "2D" 
                                 ) {
-                                    sign1 = true;
+                                    pick_two = true;
                             }
                         }   
                     }
 
-                    if(sign1){
+                    if(pick_two){
                         player1Turn = false;
 
                     }
@@ -860,7 +901,11 @@ function computer_move(){
 
                         player2Count++;
                         player2Count++;
-                        player1Turn = true;
+
+                        setTimeout(() => {
+                            leon(computer, "Computer");    
+                         }, 1000);
+
                         setTimeout(()=> {
                             computer_move();
                         }
