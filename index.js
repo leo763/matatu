@@ -2,11 +2,11 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var cardW, cardH;
 canvas.width = window.innerWidth < 700 ? window.innerWidth* (7/10) : window.innerWidth/4;
-canvas.height = window.innerHeight/(5/2);
+canvas.height = window.innerHeight/(4);
 cardW = window.innerWidth < 700 ? 50 : 100;
 cardW = window.innerWidth < 700 ? 75 : 150;
 var x = 20;
-var y = 100;
+var y = 10;
 window.addEventListener("resize", ()=>{
      canvas.width = window.innerWidth < 700 ? window.innerWidth * (7/10): window.innerWidth/4;
      cardW = window.innerWidth < 700 ? 50 : 100;
@@ -209,7 +209,7 @@ function begin() {
     clear_canvas();
     cardsPlayed = [];
     x= 20;
-    y=100;
+    y=10;
     player1Turn = false;
     canvasCardsArray = [];
     play();
@@ -450,7 +450,7 @@ function player_turn(p, pCards){
             }
 
             if(x >= 100){
-                y = 100;
+                y = 10;
                 x = 20;
             }
            
@@ -503,7 +503,7 @@ function computer_turn(pT, p, pCards){
             }
 
             if(x >= 100){
-                y = 100;
+                y = 10;
                 x = 20;
             }
             
