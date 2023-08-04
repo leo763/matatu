@@ -191,9 +191,6 @@ function computer_share (playerCards, player, c, className, playerSide) {
 
 }
 
-
-
-
 // display the cards to the cards 
 function display(player){
     player.forEach(element => {
