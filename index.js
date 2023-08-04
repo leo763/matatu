@@ -12,8 +12,7 @@ window.addEventListener("resize", ()=>{
      cardW = window.innerWidth < 700 ? 50 : 100;
      cardW = window.innerWidth < 700 ? 75 : 150;
      // function display cards to the canvas 
-
-  draw_canvas();
+     draw_canvas();
 })
 
 var player11 = document.querySelectorAll(".player1");
@@ -41,7 +40,6 @@ var computer = [];
 // choice
 var choiceArray = document.querySelectorAll(".choice1");
 var isChoice = false;
-
 
 // array of played cards 
 var cardsPlayed = [];
