@@ -124,8 +124,6 @@ var player2results;
 var computer_pick_two = false;
 var pick_two = false;
 
-
-
 function insertAfter(newNode, existingNode) {
      existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
 }
