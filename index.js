@@ -1011,12 +1011,6 @@ function leon(players, name) {
 }
 
 
-
-
-
-
-
-
 // clearing the canvas 
 function clear_canvas(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
