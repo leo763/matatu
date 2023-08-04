@@ -223,7 +223,6 @@ window.addEventListener("load", ()=>{
 });
 
 
-
 // siding the cards
 function side_card(className, playerSide){
     for (let index = 0; index <= 1; index++) {
