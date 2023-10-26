@@ -555,66 +555,66 @@ function computer_turn(pT, p, pCards){
 
 
 
-function calculate_results(){
-    let results_temp = 0;
-    let comp_results_temp = 0;
-   for (let index = 0; index < player2.length; index++) {
-        if (player2[index].style.display != "none") {
-            for (let index1 = 0; index1 < player2Cards.length; index1++) {
-                if(player2[index].id == player2Cards[index1][2]){
+// function calculate_results(){
+//     let results_temp = 0;
+//     let comp_results_temp = 0;
+//    for (let index = 0; index < player2.length; index++) {
+//         if (player2[index].style.display != "none") {
+//             for (let index1 = 0; index1 < player2Cards.length; index1++) {
+//                 if(player2[index].id == player2Cards[index1][2]){
 
-                    if (player2Cards[index1][1] == 0) {
-                        results_temp = results_temp + 20;
-                    }
-                    else if(player2Cards[index1][1] == 12){
-                        results_temp = results_temp + 15;
-                    }
-                    else{
-                        results_temp = results_temp + 2 + player2Cards[index1][1];
-                    }
-                    player2[index].style.display = "none";
+//                     if (player2Cards[index1][1] == 0) {
+//                         results_temp = results_temp + 20;
+//                     }
+//                     else if(player2Cards[index1][1] == 12){
+//                         results_temp = results_temp + 15;
+//                     }
+//                     else{
+//                         results_temp = results_temp + 2 + player2Cards[index1][1];
+//                     }
+//                     player2[index].style.display = "none";
 
 
-                }
-            }
-        }
-   }
+//                 }
+//             }
+//         }
+//    }
 
-   for (let index = 0; index < computer.length; index++) {
-        if (computer[index].style.display != "none") {
-            for (let index1 = 0; index1 < player1Cards.length; index1++) {
-                if(computer[index].id == player1Cards[index1][2]){
+//    for (let index = 0; index < computer.length; index++) {
+//         if (computer[index].style.display != "none") {
+//             for (let index1 = 0; index1 < player1Cards.length; index1++) {
+//                 if(computer[index].id == player1Cards[index1][2]){
 
-                    if (player1Cards[index1][1] == 0) {
-                        comp_results_temp = comp_results_temp + 20;
-                    }
-                    else if(player1Cards[index1][1] == 12){
-                        comp_results_temp = comp_results_temp + 15;
-                    }
-                    else{
-                        comp_results_temp = comp_results_temp + 2 + player1Cards[index1][1];
-                    }
-                    computer[index].style.display = "none";
+//                     if (player1Cards[index1][1] == 0) {
+//                         comp_results_temp = comp_results_temp + 20;
+//                     }
+//                     else if(player1Cards[index1][1] == 12){
+//                         comp_results_temp = comp_results_temp + 15;
+//                     }
+//                     else{
+//                         comp_results_temp = comp_results_temp + 2 + player1Cards[index1][1];
+//                     }
+//                     computer[index].style.display = "none";
 
-                }
-            }
-        }
-    }
-    console.log(comp_results_temp + " " + results_temp);
+//                 }
+//             }
+//         }
+//     }
+//     // console.log(comp_results_temp + " " + results_temp);
 
-    if (comp_results_temp > results_temp) {
-        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --            " + "You: " + results_temp;
-        leon(computer, "Computer");
-    }
-    else if(comp_results_temp < results_temp){
-        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
-        leon(player2, you);
-    }
-    else{
-        document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
-        leon(computer, "No one");
-    }
-}
+//     if (comp_results_temp > results_temp) {
+//         document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --            " + "You: " + results_temp;
+//         leon(computer, "Computer");
+//     }
+//     else if(comp_results_temp < results_temp){
+//         document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
+//         leon(player2, you);
+//     }
+//     else{
+//         document.getElementById("results").innerText = "Computer: " + comp_results_temp + "    --             " + "You: " + results_temp;
+//         leon(computer, "No one");
+//     }
+// }
 
 
 
